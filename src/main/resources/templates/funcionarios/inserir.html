@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>inserir</h1>
+
+    <form th:action="@{/funcionario/novo}" th:object="${novoFuncionario}" method="post">
+
+        <p>nome:<input type="text"   name="nome" required></p>
+        <p>ctps:<input type="date" name="ctps" required></p>
+        <p>rescisao:<input type="date" name="rescisao" required></p>
+
+       
+        <br>
+        <input type="submit" value="cadastrar">
+    </form>
+</body>
+</html>

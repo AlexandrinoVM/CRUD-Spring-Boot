@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>listar cargos</h1>
+    <a href="/cargo/inserir">Novo Cliente</a>
+    <table border="1px">
+        <tr>
+            <td>carg_nome</td>
+            <td>car_sal_mes</td>
+            <td>carg_descricao</td>
+        </tr>
+        <tr th:each="cargos : ${cargo}">
+            <td><span th:text="${cargos.carg_nome}"></span></td>
+            <td><span th:text="${cargos.car_sal_mes}"></td>
+            <td><span th:text="${cargos.carg_descricao}"></td>
+        </tr>
+    </table>
+</body>
+</html>

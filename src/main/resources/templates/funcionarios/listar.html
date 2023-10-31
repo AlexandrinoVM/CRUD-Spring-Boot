@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>listar</h1>
+    <a href="/funcionario/inserir">Novo Cliente</a>
+    <table border="1px">
+        <tr>
+            <td>nome</td>
+            <td>ctps</td>
+            <td>rescisao</td>
+        </tr>
+        <tr th:each="funcionario : ${funcionarios}">
+            <td><span th:text="${funcionario.nome}"></span></td>
+            <td><span th:text="${funcionario.ctps}"></td>
+            <td><span th:text="${funcionario.rescisao}"></td>
+
+        </tr>
+        
+    </table>
+</body>
+</html>
