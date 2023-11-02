@@ -8,15 +8,15 @@
 <body>
     <h1>inserir</h1>
 
-    <form th:action="@{/funcionario/novo}" th:object="${novoFuncionario}" method="post">
+    <form th:action="@{/funcionario/novo}" th:object="${novofuncionario}" method="post">
 
-        <p>nome:<input type="text"   name="nome" required></p>
-        <p>ctps:<input type="date" name="ctps" required></p>
-        <p>rescisao:<input type="date" name="rescisao" required></p>
+        <p>nome:<input type="text"   th:field="*{nome}" required></p>
+        <p>ctps:<input type="date" th:field="*{ctps}" required></p>
+        <p>rescisao:<input type="date" th:field="*{rescisao}" required></p>
 
        
         <br>
-        <input type="submit" value="cadastrar">
+        <input  type="submit" value="cadastrar">
     </form>
 </body>
 </html>

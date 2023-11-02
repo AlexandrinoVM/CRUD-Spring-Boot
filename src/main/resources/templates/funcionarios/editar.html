@@ -7,10 +7,13 @@
 </head>
 <body>
     <h1>editar</h1>
-    <form action="@{/funcionario/editar}"method="post">
-        <input type="text" >
-        <input type="text" >
-        <input type="text">
+    <form th:action="@{/funcionario/editar/{id}(id=${funcionario.func_codigo})}"  th:object="${funcionario}" method="post">
+        <input type="text" th:field="*{nome}">
+        <input type="date" th:field="*{ctps}">
+        <input type="date" th:field="*{rescisao}">
+        <input type="number" th:field="*{func_codigo}" style="display:none;">
+        <br>
+        <input type="submit" value="alterar">
     </form>
 </body>
 </html>
