@@ -18,7 +18,7 @@
             <td><span th:text="${funcionario.nome}"></span></td>
             <td><span th:text="${funcionario.ctps}"></td>
             <td><span th:text="${funcionario.rescisao}"></td>
-            <td><a th:href="@{/funcionario/editar/{id}(id=${funcionario.func_codigo})}">editar</a></td>
+            <td><a th:href="@{/funcionario/editar/{func_codigo}(func_codigo=${funcionario.func_codigo})}">editar</a></td>
         </tr>
         
     </table>

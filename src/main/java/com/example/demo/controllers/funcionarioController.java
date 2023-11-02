@@ -41,8 +41,8 @@ public class funcionarioController {
 
     }
 
-    @GetMapping("/funcionario/editar/{id}")
-	public String editarUsuario(@PathVariable("id") Integer id, Model model) {
+    @GetMapping("/funcionario/editar/{func_codigo}")
+	public String editarUsuario(@PathVariable("func_codigo") Integer id, Model model) {
 
 		Optional<funcionarioModel> usuarioVelho = funcionarioService.findById(id);
 	
@@ -58,12 +58,12 @@ public class funcionarioController {
         return "/funcionarios/alocar";
     }
 	
-	@PostMapping("/funcionario/editar/{id}")
-	public String editarUsuario(@PathVariable("id") Integer id, 
+	@PostMapping("/funcionario/editar/{func_codigo}")
+	public String editarUsuario(@PathVariable("func_codigo") Integer id, 
 			 @Validated funcionarioModel usuario,BindingResult result) {
                 if(result.hasErrors()){
                     usuario.setFunc_codigo(id);
-                    return "/funcionario/listar";
+                    return "/funcionario/editar";
                 }
 
             

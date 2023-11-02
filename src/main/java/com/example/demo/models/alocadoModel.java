@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +16,10 @@ import lombok.Setter;
 @Setter
 @Entity(name = "TB_alocado")
 public class alocadoModel {
+    public alocadoModel(){
+
+    }
+   
     @Id
     @Column(name = "aloc_id" ,nullable =false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +34,13 @@ public class alocadoModel {
 
     @Column(name = "aloc_horas_mes", nullable = false)
     private int aloc_horas_mes;
+
+    @ManyToOne
+    @JoinColumn(name = "func_codigo")
+    private funcionarioModel func_codigo;
+
+    @ManyToOne
+    @JoinColumn(name = "carg_codigo")
+    private cargoModel carg_codigo;
+
 }

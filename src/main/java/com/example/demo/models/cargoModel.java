@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +21,10 @@ import lombok.Setter;
 @Setter
 @Entity(name = "TB_cargos")
 public class cargoModel {
+   public cargoModel(){
+
+   }
+   
     @Id
     @Column(name="carg_codigo", nullable= false)
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,4 +39,6 @@ public class cargoModel {
     @Column(name="carg_descricao",length = 30, nullable= false)
     private String carg_descricao;
 
+    @OneToMany(mappedBy = "carg_codigo", cascade = CascadeType.ALL)
+    private Set<alocadoModel> alocadoModels = new HashSet<>();
 }
