@@ -11,7 +11,14 @@
         <input type="text" th:field="*{nome}">
         <input type="date" th:field="*{ctps}">
         <input type="date" th:field="*{rescisao}">
-        
+        <input type="number" th:field="*{func_codigo}" disabled>
+        <div >
+            <th:block th:each="trabalho : ${cargos}">
+                 <input type="checkbox"   th:field="*{cargo}" th:text="${trabalho.carg_nome}"  th:value="${trabalho.carg_codigo}">
+                 
+             </th:block>
+            
+         </div>
         <br>
         <input type="submit" value="alterar">
     </form>

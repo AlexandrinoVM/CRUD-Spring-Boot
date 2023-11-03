@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>inserir</h1>
 
-    <form th:action="@{/funcionario/novo}" th:object="${novofuncionario}" method="post">
+    <form th:action="@{/funcionario/novo}" th:object="${funcionarios}" method="post">
 
-        <p>nome:<input type="text"   th:field="*{nome}" required></p>
-        <p>ctps:<input type="date" th:field="*{ctps}" required></p>
-        <p>rescisao:<input type="date" th:field="*{rescisao}" required></p>
+        <p>nome:<input type="text" th:field="*{nome}" ></p>
+        <p>ctps:<input type="date" th:field="*{ctps}" ></p>
+        <p>rescisao:<input type="date" th:field="*{rescisao}"></p>
 
-       
+        <div >
+           <th:block th:each="trabalho : ${cargos}">
+                <input type="checkbox"   th:field="*{cargo}" th:text="${trabalho.carg_nome}"  th:value="${trabalho.carg_codigo}">
+                
+            </th:block>
+           
+        </div>
         <br>
-        <input  type="submit" value="cadastrar">
+        <input type="submit" value="cadastrar">
     </form>
 </body>
+
 </html>

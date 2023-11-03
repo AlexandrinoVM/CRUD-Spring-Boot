@@ -7,6 +7,5 @@ import com.example.demo.models.alocadoModel;
 
 @Repository
 public interface alocarRepository extends JpaRepository<alocadoModel, Integer>{
-
     
 }

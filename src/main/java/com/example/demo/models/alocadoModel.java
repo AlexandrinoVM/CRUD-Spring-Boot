@@ -26,21 +26,59 @@ public class alocadoModel {
     private Integer aloc_id;
 
 
-    @Column(name = "aloc_inicio", nullable = false)
+    @Column(name = "aloc_inicio")
     private Date aloc_inicio;
 
-    @Column(name = "aloc_fim", nullable = false)
+    @Column(name = "aloc_fim")
     private Date aloc_fim;
 
-    @Column(name = "aloc_horas_mes", nullable = false)
+    @Column(name = "aloc_horas_mes")
     private int aloc_horas_mes;
 
     @ManyToOne
-    @JoinColumn(name = "func_codigo")
-    private funcionarioModel func_codigo;
+    @JoinColumn(name ="carg_codigo")
+   private cargoModel cargo;
 
-    @ManyToOne
-    @JoinColumn(name = "carg_codigo")
-    private cargoModel carg_codigo;
+   @ManyToOne
+    @JoinColumn(name ="func_codigo")
+   private funcionarioModel funcionario;
+  
+
+   public alocadoModel(int aloc_horas_mes) {
+    this.aloc_horas_mes = aloc_horas_mes;
+}
+
+public alocadoModel(Date aloc_inicio, Date aloc_fim, int aloc_horas_mes) {
+    this.aloc_inicio = aloc_inicio;
+    this.aloc_fim = aloc_fim;
+    this.aloc_horas_mes = aloc_horas_mes;
+}
+
+public alocadoModel( Date aloc_inicio, Date aloc_fim, int aloc_horas_mes, cargoModel cargo,
+        funcionarioModel funcionario) {
+    this.aloc_inicio = aloc_inicio;
+    this.aloc_fim = aloc_fim;
+    this.aloc_horas_mes = aloc_horas_mes;
+    this.cargo = cargo;
+    this.funcionario = funcionario;
+}
+
+public alocadoModel(int aloc_horas_mes, cargoModel cargo,
+        funcionarioModel funcionario) {
+    
+    this.aloc_horas_mes = aloc_horas_mes;
+    this.cargo = cargo;
+    this.funcionario = funcionario;
+}
+
+@Override
+public String toString() {
+    return "alocadoModel [aloc_inicio=" + aloc_inicio + ", aloc_fim=" + aloc_fim + ", aloc_horas_mes=" + aloc_horas_mes
+            + ", cargo=" + cargo + ", funcionario=" + funcionario + "]";
+}
+
+
+
+   
 
 }
