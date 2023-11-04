@@ -1,9 +1,12 @@
 package com.example.demo.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,11 +35,14 @@ public class cargoController {
         return "/cargos/listar";
     }
 
-    @GetMapping(value = "/cargo/editar")
-    public ModelAndView editar(){
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("/cargos/editar");
-        return mv;
+    @GetMapping(value = "/cargo/editar/{carg_codigo}")
+    public String editar(@PathVariable ("carg_codigo") Integer id,Model mdoel){
+        Optional<cargoModel> cargo = cargoRepository.findById(id);
+        cargoModel cargonovo = cargo.get();
+
+        mdoel.addAttribute("cargos", cargonovo);
+
+        return "/cargos/editar";
     }
 
     @PostMapping(value = "/cargo/novo")

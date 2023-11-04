@@ -21,10 +21,14 @@ import com.example.demo.models.funcionarioModel;
 import com.example.demo.repository.alocarRepository;
 import com.example.demo.repository.cargoRepository;
 import com.example.demo.repository.funcionarioRespository;
+import com.example.demo.services.alocadomodelservice;
 import com.example.demo.services.funcionarioService;
 
 @Controller
 public class funcionarioController {
+
+    @Autowired
+   alocadomodelservice alocadomodelservice;
 
     @Autowired
     funcionarioRespository funcionarioRespository;
@@ -52,6 +56,7 @@ public class funcionarioController {
         List<cargoModel> todoscargos = cargorepo.findAll();
         model.addAttribute("cargos",todoscargos );
         model.addAttribute("funcionarios",new funcionarioModel());
+        model.addAttribute("alocados",new alocadoModel());
 
         return "/funcionarios/inserir";
 
@@ -60,9 +65,13 @@ public class funcionarioController {
     @GetMapping("/funcionario/editar/{func_codigo}")
 	public String editarUsuario(@PathVariable("func_codigo") Integer id, Model model) {
 		Optional<funcionarioModel> usuarioVelho = funcionarioService.findById(id);
+        Optional<alocadoModel> alocadovelho = aloc.findById(id);
         System.out.println(id);
 		funcionarioModel usuario = usuarioVelho.get();
 	    model.addAttribute("funcionario", usuario);
+        
+        alocadoModel alocado = alocadovelho.get();
+        model.addAttribute("alocados",alocado );
 
         List<cargoModel> todoscargos = cargorepo.findAll();
         model.addAttribute("cargos",todoscargos );
@@ -78,7 +87,7 @@ public class funcionarioController {
 	
 	@PostMapping("/funcionario/editar/{func_codigo}")
 	public String editarUsuario(@PathVariable("func_codigo") Integer id, 
-			 @Validated funcionarioModel usuario,BindingResult result) {
+			 @Validated funcionarioModel usuario,alocadoModel alocado ,BindingResult result) {
                 if(result.hasErrors()){
                     usuario.setFunc_codigo(id);
                     return "/funcionario/editar";
@@ -87,15 +96,16 @@ public class funcionarioController {
             
              System.out.println(id);
              funcionarioRespository.save(usuario);
-            
+             aloc.save(alocado);
 	   
 	    return "redirect:/funcionario/listar";
 	}
 
 
     @PostMapping(value = "/funcionario/novo")
-    public String novo(@ModelAttribute funcionarioModel novoFuncionario) {
+    public String novo(@ModelAttribute funcionarioModel novoFuncionario,alocadoModel aloca) {
         funcionarioService.save(novoFuncionario);
+        aloc.save(aloca);
         return "redirect:/funcionario/listar";
     }
 

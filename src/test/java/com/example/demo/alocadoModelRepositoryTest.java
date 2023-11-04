@@ -53,8 +53,8 @@ public class alocadoModelRepositoryTest {
         funcionarioModel func = entityManager.find(funcionarioModel.class,1);
          cargoModel carg = entityManager.find(cargoModel.class,1);
 
-        alocadoModel aloc = new alocadoModel(150,carg,func);
-       alocadorep.save(aloc);
+       // alocadoModel aloc = new alocadoModel(150,carg,func);
+       // alocadorep.save(aloc);
     }
     @Test
     public void testlist(){

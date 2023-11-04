@@ -16,12 +16,17 @@
         <p>ctps:<input type="date" th:field="*{ctps}" ></p>
         <p>rescisao:<input type="date" th:field="*{rescisao}"></p>
 
+        <div th:object="${alocados}">
+            <p>data inicio:<input  type="date" th:field="*{aloc_inicio}" ></p>
+            <p>data fim:<input  type="date" th:field="*{aloc_fim}" ></p>
+            <p>salario mes:<input  type="number" th:field="*{aloc_horas_mes}" ></p>
+        </div>
+        
         <div >
            <th:block th:each="trabalho : ${cargos}">
                 <input type="checkbox"   th:field="*{cargo}" th:text="${trabalho.carg_nome}"  th:value="${trabalho.carg_codigo}">
                 
             </th:block>
-           
         </div>
         <br>
         <input type="submit" value="cadastrar">

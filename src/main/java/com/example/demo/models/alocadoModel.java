@@ -1,6 +1,8 @@
 package com.example.demo.models;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -41,10 +43,12 @@ public class alocadoModel {
 
    @ManyToOne
     @JoinColumn(name ="func_codigo")
-   private funcionarioModel funcionario;
+   private funcionarioModel  funcionario;
   
 
-   public alocadoModel(int aloc_horas_mes) {
+   
+
+public alocadoModel(int aloc_horas_mes) {
     this.aloc_horas_mes = aloc_horas_mes;
 }
 
@@ -54,22 +58,9 @@ public alocadoModel(Date aloc_inicio, Date aloc_fim, int aloc_horas_mes) {
     this.aloc_horas_mes = aloc_horas_mes;
 }
 
-public alocadoModel( Date aloc_inicio, Date aloc_fim, int aloc_horas_mes, cargoModel cargo,
-        funcionarioModel funcionario) {
-    this.aloc_inicio = aloc_inicio;
-    this.aloc_fim = aloc_fim;
-    this.aloc_horas_mes = aloc_horas_mes;
-    this.cargo = cargo;
-    this.funcionario = funcionario;
-}
 
-public alocadoModel(int aloc_horas_mes, cargoModel cargo,
-        funcionarioModel funcionario) {
-    
-    this.aloc_horas_mes = aloc_horas_mes;
-    this.cargo = cargo;
-    this.funcionario = funcionario;
-}
+
+
 
 @Override
 public String toString() {

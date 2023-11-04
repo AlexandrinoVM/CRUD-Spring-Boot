@@ -18,6 +18,7 @@
             <td><span th:text="${cargos.carg_nome}"></span></td>
             <td><span th:text="${cargos.car_sal_mes}"></td>
             <td><span th:text="${cargos.carg_descricao}"></td>
+            <td><a th:href="@{/cargo/editar/{carg_codigo}(carg_codigo=${cargos.carg_codigo})}">editar</a></td>
         </tr>
     </table>
 </body>
