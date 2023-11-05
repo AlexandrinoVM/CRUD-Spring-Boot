@@ -27,13 +27,13 @@ public class cargoModel {
    
     @Id
     @Column(name="carg_codigo", nullable= false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer carg_codigo;
 
     @Column(name="carg_nome",length = 30)
     private String carg_nome;
 
-    @Column(name="carg_sal_mes")
+    @Column(name="carg_sal_mes",nullable = false)
     private double car_sal_mes;
 
     @Column(name="carg_descricao",length = 30)

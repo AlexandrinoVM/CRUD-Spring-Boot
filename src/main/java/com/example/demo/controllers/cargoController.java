@@ -5,12 +5,16 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.models.alocadoModel;
 import com.example.demo.models.cargoModel;
+import com.example.demo.models.funcionarioModel;
 import com.example.demo.repository.cargoRepository;
 import com.example.demo.services.cargoService;
 
@@ -23,10 +27,11 @@ public class cargoController {
     cargoService cargoService;
 
     @GetMapping(value = "/cargo/inserir")
-    public ModelAndView inseri(){
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("/cargos/inserir");
-        return mv;
+    public String inseri(Model mdoel){
+
+
+        mdoel.addAttribute("cargo", new cargoModel());
+        return"/cargos/inserir";
     }
 
     @GetMapping(value = "/cargo/listar")
@@ -34,6 +39,10 @@ public class cargoController {
         model.addAttribute("cargo",cargoRepository.findAll());
         return "/cargos/listar";
     }
+
+
+
+
 
     @GetMapping(value = "/cargo/editar/{carg_codigo}")
     public String editar(@PathVariable ("carg_codigo") Integer id,Model mdoel){
@@ -49,5 +58,13 @@ public class cargoController {
     public String novo(cargoModel cargo){
         cargoService.save(cargo);
         return "redirect:/cargo/listar";
+    }
+
+    @PostMapping("/cargo/editar/{carg_codigo}")
+    public String editar(@PathVariable("carg_codigo") Integer id,cargoModel cargo){
+        
+        cargoRepository.save(cargo);
+
+          return "redirect:/cargo/listar";
     }
 }

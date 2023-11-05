@@ -25,7 +25,7 @@ import jakarta.persistence.GenerationType;
 @Getter
 @Setter
 @Entity
-@Table(name = "TBL_funcionario")
+@Table(name = "TB_funcionario")
 public class funcionarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

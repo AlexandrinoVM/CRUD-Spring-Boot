@@ -7,11 +7,13 @@
 </head>
 <body>
     <h1>editar cargo</h1>
-    <form action="@{/cargo/editar/{carg_codigo}(carg_codigo=${cargos.carg_codigo})}" th:object="${cargos}" method="post">
+    <form th:action="@{/cargo/editar/{carg_codigo}(carg_codigo=${cargos.carg_codigo})}" th:object="${cargos}" method="post">
         <input type="text" th:field="*{carg_nome}">
         <input type="number" th:field="*{car_sal_mes}">
         <input type="text"th:field="*{carg_descricao}">
+        <input type="number" th:field="*{carg_codigo}" disabled>
         <input type="submit" value="editar">
+        
     </form>
 </body>
 </html>
