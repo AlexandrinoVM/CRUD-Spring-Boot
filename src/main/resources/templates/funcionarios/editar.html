@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/editar.css}">
 </head>
-<body>
-    <h1>editar</h1>
-    <form th:action="@{/funcionario/editar/{func_codigo}(func_codigo=${funcionario.func_codigo})}"  th:object="${funcionario}" method="post">
-        <input type="text" th:field="*{nome}">
-        <input type="date" th:field="*{ctps}">
-        <input type="date" th:field="*{rescisao}">
-        <input type="number" th:field="*{func_codigo}" disabled>
 
-        <div th:object="${funcionario}" >
-            <input th:object="${alocados}" type="date" th:field="*{aloc_inicio}">
-            <input th:object="${alocados}" type="date" th:field="*{aloc_fim}">
-            <input th:object="${alocados}" type="number" th:field="*{aloc_horas_mes}">
-            <input th:object="${alocados}" type="number" th:field="*{aloc_id}" disabled>
-        </div>
-        <div>
-            <th:block th:each="trabalho : ${cargos}">
-                 <input type="checkbox"   th:field="*{cargo}" th:text="${trabalho.carg_nome}"  th:value="${trabalho.carg_codigo}">
-             </th:block>
-            
-         </div>
-        <br>
-        <input type="submit" value="alterar">
-    </form>
+<body>
+    <div class="container">
+        <form class="box" th:action="@{/funcionario/editar/{func_codigo}(func_codigo=${funcionario.func_codigo})}"
+            th:object="${funcionario}" method="post">
+            <h1 >editar</h1>
+          <p>  nome:<input type="text" th:field="*{nome}"></p>
+            <p> ctps:<input type="date" th:field="*{ctps}"></p>
+            <p> rescisao:<input type="date" th:field="*{rescisao}"></p>
+            <input type="number" th:field="*{func_codigo}" disabled  style="display: none;">
+
+            <div th:object="${funcionario}">
+                <p> inicio alocacao:<input th:object="${alocados}"type="date" th:field="*{aloc_inicio}"></p>
+                <p>fim alocacao:</p><input th:object="${alocados}"   type="date" th:field="*{aloc_fim}"></p>
+                <p>horas alocadas:</p><input th:object="${alocados}" type="number" th:field="*{aloc_horas_mes}"></p>
+                <input th:object="${alocados}" type="number" th:field="*{aloc_id}" >
+            </div>
+            <div>
+                <th:block th:each="trabalho : ${cargos}">
+                    <input type="checkbox" th:field="*{cargo}" th:text="${trabalho.carg_nome}"
+                        th:value="${trabalho.carg_codigo}">
+                        <br>
+                </th:block>
+
+            </div>
+            <br>
+            <input type="submit" value="alterar" class="btn">
+        </form>
+    </div>
 </body>
+
 </html>

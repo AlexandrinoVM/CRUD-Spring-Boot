@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+    <link rel="stylesheet" th:href="@{/css/listar.css}">
 </head>
 <body>
-    <h1>listar cargos</h1>
-    <a href="/cargo/inserir">Novo Cliente</a>
-    <table border="1px">
+    <h1 style="text-align: center;">listar cargos</h1>
+    <div class="container">
+      
+    <table class="lista">
         <tr>
             <td>carg_nome</td>
             <td>car_sal_mes</td>
             <td>carg_descricao</td>
+            <td>editar</td>
         </tr>
         <tr th:each="cargos : ${cargo}">
             <td><span th:text="${cargos.carg_nome}"></span></td>
@@ -21,5 +25,7 @@
             <td><a th:href="@{/cargo/editar/{carg_codigo}(carg_codigo=${cargos.carg_codigo})}">editar</a></td>
         </tr>
     </table>
+</div>
+    <a href="/cargo/inserir" class="a">adicionar novo cargo</a>
 </body>
 </html>

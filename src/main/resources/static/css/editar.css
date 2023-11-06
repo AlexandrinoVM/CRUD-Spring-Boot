@@ -1,0 +1,41 @@
+body{
+    font-family: 'Merriweather', serif;
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    background-color: #88B04B;
+}
+
+input:hover{
+    opacity: 0.7;
+}
+input{
+    border-radius:  15px;
+    text-decoration: none;
+    border: none;
+}
+.btn{
+    height: 50px;
+    width: 100px;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    opacity: 0.9;
+    color: white;
+    width: 400px;
+    height: 575px;
+    background: #3e3a54;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.title{
+    margin-top: 50px;
+}

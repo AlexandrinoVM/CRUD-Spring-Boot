@@ -5,46 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" th:href="@{/css/listar.css}">
 </head>
 
 <body>
-    <a href="/funcionario/inserir">Novo Cliente</a>
-    <p>dados do funcionario</p>
-<div style="display: flex;">
-    <table border="1px">
+    <div class="container">
+        
+        <a href="/funcionario/inserir" class="a">Novo Cliente</a>
+        <div class="lista" style="display: flex;">
+            <table border="1px">
+                <tr>
+                    <td>nome</td>
+                    <td>ctps</td>
+                    <td>rescisao</td>
+                    <td>cargo</td>
+                </tr>
+                <tr th:each="funcionario : ${funcionarios}">
+                    <td><span th:text="${funcionario.nome}"></span></td>
+                    <td><span th:text="${funcionario.ctps}"></td>
+                    <td><span th:text="${funcionario.rescisao}"></td>
+                    <td><span th:text="${funcionario.cargo}"></td>
 
-        <tr>
-            <td>nome</td>
-            <td>ctps</td>
-            <td>rescisao</td>
-            <td>cargo</td>
+                </tr>
 
+            </table>
 
-        </tr>
-        <tr th:each="funcionario : ${funcionarios}">
-            <td><span th:text="${funcionario.nome}"></span></td>
-            <td><span th:text="${funcionario.ctps}"></td>
-            <td><span th:text="${funcionario.rescisao}"></td>
-            <td><span th:text="${funcionario.cargo}"></td>
-
-        </tr>
-
-    </table>
-    
-    <table border="1px">
-        <td>data inicio</td>
-        <td>data fim</td>
-        <td>salarios mes</td>
-        <td>editar</td>
-        </td>
-        <tr th:each="alocado : ${alocados}">
-            <td><span th:text="${alocado.aloc_inicio}"></span></td>
-            <td><span th:text="${alocado.aloc_fim}"></td>
-            <td><span th:text="${alocado.aloc_horas_mes}"></td>
-            <td><a th:href="@{'/funcionario/editar/' + ${alocado.aloc_id}}">editar</a></td>
-        </tr>
-    </table>
-</div>
+            <table border="1px">
+                <td>data inicio</td>
+                <td>data fim</td>
+                <td>hr alocadas</td>
+                <td>editar</td>
+                </td>
+                <tr th:each="alocado : ${alocados}">
+                    <td><span th:text="${alocado.aloc_inicio}"></span></td>
+                    <td><span th:text="${alocado.aloc_fim}"></td>
+                    <td><span th:text="${alocado.aloc_horas_mes}"></td>
+                    <td><a th:href="@{'/funcionario/editar/' + ${alocado.aloc_id}}">editar</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>

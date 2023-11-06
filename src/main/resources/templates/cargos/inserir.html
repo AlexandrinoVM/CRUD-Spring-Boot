@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+ <link rel="stylesheet" th:href="@{/css/inserir.css}">
+
 </head>
 <body>
-    <h1>inserir cargo</h1>
+    <div class="container">
+    
 
-    <form th:action="@{/cargo/novo}" th:object="${cargo}" method="post">
+    <form class="box" th:action="@{/cargo/novo}" th:object="${cargo}" method="post">
+        <h1 class="title">inserir cargo</h1>
         <p>nome cargo:<input type="text" name="carg_nome"></p>
         <p>salarios mensal:<input type="number" name="car_sal_mes"></p>
         <p>descricao do cargo<input type="text" name="carg_descricao"></p>
 
         <br>
-        <input type="submit" value="cadastrar">
+        <input type="submit" value="cadastrar" class="btn">
     </form>
+    </div>
 </body>
 </html>

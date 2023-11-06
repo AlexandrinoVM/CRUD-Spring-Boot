@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/editar.css}">
 </head>
+
 <body>
-    <h1>editar cargo</h1>
-    <form th:action="@{/cargo/editar/{carg_codigo}(carg_codigo=${cargos.carg_codigo})}" th:object="${cargos}" method="post">
-        <input type="text" th:field="*{carg_nome}">
-        <input type="number" th:field="*{car_sal_mes}">
-        <input type="text"th:field="*{carg_descricao}">
-        <input type="number" th:field="*{carg_codigo}" disabled>
-        <input type="submit" value="editar">
-        
-    </form>
+
+    <div class="container">
+        <form class="box" th:action="@{/cargo/editar/{carg_codigo}(carg_codigo=${cargos.carg_codigo})}"
+            th:object="${cargos}" method="post">
+            <h1 class="title">editar cargo</h1>
+            <p>nome:<input type="text" th:field="*{carg_nome}"></p>
+
+            <p>salario:<input type="number" th:field="*{car_sal_mes}"></p>
+
+            <p>descricao<input type="text" th:field="*{carg_descricao}"></p>
+            <input type="number" th:field="*{carg_codigo}" disabled style="display: none;">
+            <input type="submit" value="editar" class="btn">
+        </form>
+    </div>
 </body>
+
 </html>

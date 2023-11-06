@@ -6,31 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
+ <link rel="stylesheet" th:href="@{/css/inserir.css}">
 <body>
-    <h1>inserir</h1>
-
-    <form th:action="@{/funcionario/novo}" th:object="${funcionarios}" method="post">
-
+    <div class="container">
+       
+        <form class="box" th:action="@{/funcionario/novo}" th:object="${funcionarios}" method="post">
+            <h1>inserir</h1>
         <p>nome:<input type="text" th:field="*{nome}" ></p>
-        <p>ctps:<input type="date" th:field="*{ctps}" ></p>
-        <p>rescisao:<input type="date" th:field="*{rescisao}"></p>
+        <p>ctps:<input type="date" th:field="*{ctps}" class="ctps"></p>
+        <p>rescisao:<input type="date" th:field="*{rescisao}" class="rescisao"></p>
 
         <div th:object="${alocados}">
-            <p>data inicio:<input  type="date" th:field="*{aloc_inicio}" ></p>
-            <p>data fim:<input  type="date" th:field="*{aloc_fim}" ></p>
-            <p>salario mes:<input  type="number" th:field="*{aloc_horas_mes}" ></p>
+            <p>data inicio:<input  type="date" th:field="*{aloc_inicio}" class="aloc_inico"></p>
+            <p>data fim:<input  type="date" th:field="*{aloc_fim}"  class="aloc_fim"></p>
+            <p>horas alocadas:<input  type="number" th:field="*{aloc_horas_mes}" class="aloc_horas"></p>
         </div>
         
         <div >
            <th:block th:each="trabalho : ${cargos}">
                 <input type="checkbox"   th:field="*{cargo}" th:text="${trabalho.carg_nome}"  th:value="${trabalho.carg_codigo}">
-                
+                <br>
             </th:block>
         </div>
         <br>
-        <input type="submit" value="cadastrar">
+        <input type="submit" value="cadastrar" class="btn">
     </form>
+</div>
 </body>
 
 </html>
